@@ -2,8 +2,8 @@ name: Build rk3399_disvr archlinuxarm
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
+  #schedule:
+    #- cron: "0 0 * * *"
   push:
     branches:
       - master
