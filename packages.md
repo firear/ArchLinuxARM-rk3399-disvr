@@ -1,0 +1,1 @@
+archlinuxarm-keyring base dhcpcd dialog net-tools netctl openssh vi which
