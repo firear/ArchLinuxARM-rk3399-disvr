@@ -29,7 +29,7 @@ jobs:
 
       - name: generate builder
         run: |
-          sudo apt update && sudo apt install qemu-user-static libarchive-tools arch-install-scripts xz
+          sudo apt update && sudo apt install qemu-user-static libarchive-tools arch-install-scripts xz-utils
           sudo curl -L -o ./ArchLinuxARM-aarch64-latest.tar.gz http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
           sudo curl -L -o ./${{ env.IMG_NAME }}.img.xz https://dl.armbian.com/firefly-rk3399/Bookworm_current_minimal
           sudo xz -d ./${{ env.IMG_NAME }}.img.xz
