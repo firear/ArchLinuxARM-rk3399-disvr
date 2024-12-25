@@ -40,16 +40,17 @@ jobs:
           sudo cp -f ./pacman.conf ./builder/etc/pacman.conf
           ${{ env.BUILD_SH }} "pacman -R --ask=4 linux-aarch64"
           ${{ env.BUILD_SH }} "pacman -Syyu --ask=4 arch-install-scripts cloud-guest-utils"
+          rm -rf ./ArchLinuxARM-aarch64-latest.tar.gz 
         shell: bash
 
       - name: prepare img file
         run: |
           sudo losetup --partscan ${{ env.V_SD }} ${{ env.IMG_NAME }}.img
           sudo mount ${{ env.V_SD }}p1 ./builder/mnt
-          sudo mv ./builder/mnt/boot ./builder/
+          sudo mv ./builder/mnt/boot ./
           sudo rm -rf ./builder/mnt/*
-          sudo mv ./builder/boot ./builder/mnt/
-          sudo cp rk-kernel.dtb ./builder/mnt/boot/dtb/rockchip/rk3399-firefly.dtb
+          sudo mv ./boot ./builder/mnt/
+          sudo cp -f rk-kernel.dtb ./builder/mnt/boot/dtb/rockchip/rk3399-firefly.dtb
         shell: bash
 
       - name: generate target
